@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Image Test - Avighna Fashions</title>
+  <style>
+    body { font-family: Arial, sans-serif; padding: 20px; }
+    .test-section { margin: 20px 0; padding: 20px; border: 1px solid #ddd; }
+    img { max-width: 300px; border: 2px solid #000; margin: 10px; }
+    .error { color: red; }
+    .success { color: green; }
+  </style>
+</head>
+<body>
+  <h1>Image Loading Test</h1>
+  
+  <div class="test-section">
+    <h2>1. Logo Test (Local)</h2>
+    <p>Path: ./assets/logo.png</p>
+    <img src="./assets/logo.png" alt="Logo" onerror="this.nextElementSibling.innerHTML='<span class=error>❌ Failed to load</span>'" onload="this.nextElementSibling.innerHTML='<span class=success>✅ Loaded successfully</span>'" />
+    <div></div>
+  </div>
+
+  <div class="test-section">
+    <h2>2. Product Image Test (External - Unsplash)</h2>
+    <p>Path: https://images.unsplash.com/photo-1520975954732-35ddbf7420bd?q=80&w=400</p>
+    <img src="https://images.unsplash.com/photo-1520975954732-35ddbf7420bd?q=80&w=400&auto=format&fit=crop" alt="Product" onerror="this.nextElementSibling.innerHTML='<span class=error>❌ Failed to load</span>'" onload="this.nextElementSibling.innerHTML='<span class=success>✅ Loaded successfully</span>'" />
+    <div></div>
+  </div>
+
+  <div class="test-section">
+    <h2>3. Check Console</h2>
+    <button onclick="checkImages()">Run Diagnostic</button>
+    <pre id="diagnostic"></pre>
+  </div>
+
+  <script>
+    function checkImages() {
+      const diag = document.getElementById('diagnostic');
+      let report = 'Image Diagnostic Report:\n\n';
+      
+      report += '1. Current URL: ' + window.location.href + '\n';
+      report += '2. Base URL: ' + window.location.origin + '\n';
+      report += '3. Logo path should be: ' + window.location.origin + '/assets/logo.png\n\n';
+      
+      // Check if logo exists
+      fetch('./assets/logo.png')
+        .then(response => {
+          if (response.ok) {
+            report += '✅ Logo file exists and is accessible\n';
+            report += '   Size: ' + response.headers.get('content-length') + ' bytes\n';
+          } else {
+            report += '❌ Logo file not found (404)\n';
+            report += '   Please save your logo to: assets/logo.png\n';
+          }
+          diag.textContent = report;
+        })
+        .catch(err => {
+          report += '❌ Error checking logo: ' + err.message + '\n';
+          diag.textContent = report;
+        });
+    }
+  </script>
+
+  <div class="test-section">
+    <h2>Instructions to Fix</h2>
+    <ol>
+      <li><strong>Save your logo:</strong> Right-click the logo image you uploaded and save it to:<br>
+          <code>c:\Users\Administrator\my-app\Shankar\AviFashions\assets\logo.png</code></li>
+      <li><strong>Check server:</strong> Make sure the Python server is running from the AviFashions folder</li>
+      <li><strong>Clear cache:</strong> Press Ctrl+Shift+R to hard refresh the page</li>
+      <li><strong>Check browser console:</strong> Press F12 and look for any error messages</li>
+    </ol>
+  </div>
+
+  <p><a href="index.html">← Back to Homepage</a></p>
+</body>
+</html>

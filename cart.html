@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cart – Avighna Fashions</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./css/styles.css" />
+</head>
+<body>
+  <header id="site-header"></header>
+
+  <main class="container">
+    <h1>Your Cart</h1>
+    <div id="cart-container" class="cart-container">
+      <div id="cart-items" class="cart-items"></div>
+      <aside class="cart-summary">
+        <h3>Summary</h3>
+        <div class="summary-line"><span>Subtotal</span><span id="subtotal">₹0</span></div>
+        <div class="summary-line"><span>Shipping</span><span>Free</span></div>
+        <div class="summary-total"><span>Total</span><span id="total">₹0</span></div>
+        <button id="checkout-btn" class="btn btn-primary w-100">Checkout</button>
+      </aside>
+    </div>
+  </main>
+
+  <footer id="site-footer"></footer>
+
+  <script src="./js/data.js"></script>
+  <script src="./js/store.js"></script>
+  <script src="./js/app.js"></script>
+  <script src="./js/cart.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      initCartPage();
+    });
+  </script>
+</body>
+</html>

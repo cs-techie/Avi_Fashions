@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Under Maintenance – Avighna Fashions</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./css/styles.css" />
+</head>
+<body>
+  <div class="maintenance-container">
+    <div class="maintenance-content">
+      <div class="maintenance-icon">🛠️</div>
+      <h1>Under Maintenance</h1>
+      <p>We're currently updating our product catalog to bring you the best fashion collection.</p>
+      <p class="maintenance-subtext">Our team is working hard to add new products. Please check back soon!</p>
+      <div class="maintenance-actions">
+        <a href="index.html" class="btn btn-outline">Go to Homepage</a>
+        <a href="login.html" class="btn btn-primary">Admin Login</a>
+      </div>
+    </div>
+  </div>
+
+  <script src="./js/data.js"></script>
+  <script src="./js/store.js"></script>
+  <script>
+    // Check if products exist, if yes redirect to products page
+    document.addEventListener('DOMContentLoaded', () => {
+      const products = getProducts();
+      if (products && products.length > 0) {
+        window.location.href = 'products.html';
+      }
+    });
+  </script>
+</body>
+</html>

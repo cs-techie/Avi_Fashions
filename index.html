@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Avighna Fashions – Women’s Fashion</title>
+  <meta name="description" content="Avighna Fashions – Modern minimalist e-commerce for women's clothing." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./css/styles.css" />
+</head>
+<body>
+  <header id="site-header"></header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-content">
+        <h1>Avighna Fashions</h1>
+        <p>Discover modern, minimalist styles for every moment.</p>
+        <a class="btn btn-primary" href="products.html?category=New%20Arrivals">Shop New Arrivals</a>
+      </div>
+    </section>
+
+    <section class="featured">
+      <div class="container">
+        <h2 class="section-title">New Arrivals</h2>
+        <div id="featured-grid" class="product-grid"></div>
+        <div class="center mt-24">
+          <a class="btn btn-outline" href="products.html">View All</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer id="site-footer"></footer>
+
+  <script src="./js/data.js"></script>
+  <script src="./js/store.js"></script>
+  <script src="./js/app.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // Check if products exist
+      const products = getProducts();
+      if (!products || products.length === 0) {
+        window.location.href = 'maintenance.html';
+        return;
+      }
+      // Render a few featured products (latest 8)
+      const grid = document.getElementById('featured-grid');
+      const items = products.slice(0, 8);
+      renderProducts(grid, items);
+    });
+  </script>
+</body>
+</html>
